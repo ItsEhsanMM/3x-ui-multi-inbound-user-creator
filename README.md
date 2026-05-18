@@ -57,12 +57,23 @@ npm run build
 
 ---
 
-project/
-├── src/ /n
-│   ├── main.js
-│   └── style.css
+```
+3x-ui-multi-inbound-user-creator/
+├── LICENSE
+├── README.md
 ├── index.html
-└── .env
+├── package.json
+├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+└── src/
+    ├── assets/
+    │   ├── hero.png
+    │   ├── javascript.svg
+    │   └── vite.svg
+    ├── main.js
+    └── style.css
+```
 
 ---
 
