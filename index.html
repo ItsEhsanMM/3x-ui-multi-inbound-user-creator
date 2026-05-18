@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <link
+         rel="icon"
+         type="image/svg+xml"
+         href="/favicon.svg"
+      />
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+      <link
+         rel="preconnect"
+         href="https://fonts.googleapis.com"
+      />
+      <link
+         rel="preconnect"
+         href="https://fonts.gstatic.com"
+         crossorigin
+      />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="./src/style.css"
+      />
+      <title>3xui-multi-inbound</title>
+   </head>
+   <body>
+      <nav>
+         <div class="nav-logo">3x-ui</div>
+      </nav>
+
+      <div class="container">
+         <!-- System Quick Stats -->
+         <div class="grid">
+            <div class="card">
+               <span class="card-label">CPU Usage</span>
+               <div
+                  class="value"
+                  id="cpu-usage"
+               >
+                  0%
+               </div>
+            </div>
+            <div class="card">
+               <span class="card-label">RAM Usage</span>
+               <div
+                  class="value"
+                  id="ram-usage"
+               >
+                  0%
+               </div>
+            </div>
+            <div class="card">
+               <span class="card-label">Upload</span>
+               <div
+                  class="value"
+                  id="net-up"
+               >
+                  0
+               </div>
+            </div>
+            <div class="card">
+               <span class="card-label">Download</span>
+               <div
+                  class="value"
+                  id="net-down"
+               >
+                  0
+               </div>
+            </div>
+            <div class="card">
+               <span class="card-label">Online Clients</span>
+               <div
+                  class="value"
+                  id="online-count"
+               >
+                  0
+               </div>
+            </div>
+         </div>
+
+         <!-- Creation Panel Form -->
+         <div class="section">
+            <h3 class="section-title">
+               <i
+                  class="fa-solid fa-user-plus"
+                  style="color: var(--primary)"
+               ></i>
+               ساخت کاربر جدید
+            </h3>
+
+            <form id="add-client-form">
+               <div class="form-group">
+                  <div class="email-box">
+                     <input
+                        class="input"
+                        id="client-email"
+                        placeholder="Email Address"
+                        dir="ltr"
+                     />
+                     <button
+                        type="button"
+                        class="btn-magic"
+                        onclick="generateEmail()"
+                        title="Generate Random Email"
+                     >
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                     </button>
+                  </div>
+               </div>
+
+               <div class="form-group">
+                  <input
+                     class="input"
+                     id="client-volume"
+                     type="number"
+                     placeholder="Traffic Volume Allocation (GB)"
+                     dir="ltr"
+                  />
+               </div>
+
+               <div
+                  class="form-actions"
+                  style="margin-top: 18px"
+               >
+                  <button class="btn">ایجاد کانکشن</button>
+               </div>
+            </form>
+         </div>
+      </div>
+
+      <!-- Context Sensitive Sheet Modal -->
+      <div
+         class="modal"
+         id="modal"
+      >
+         <div class="modal-content">
+            <h3
+               class="section-title"
+               style="margin-bottom: 8px"
+            >
+               <i
+                  class="fa-solid fa-circle-check"
+                  style="color: #10b981"
+               ></i>
+               کاربر با موفقیت ساخته شد
+            </h3>
+            <p
+               style="
+                  color: var(--text-muted);
+                  margin-bottom: 16px;
+                  font-size: 13px;
+               "
+            >
+               لینک اشتراک اختصاصی تولید شده را کپی کنید:
+            </p>
+
+            <input
+               id="sub-link"
+               class="input"
+               readonly
+               style="
+                  text-align: center;
+                  font-family: monospace;
+                  background: var(--bg-main);
+               "
+               dir="ltr"
+            />
+
+            <div
+               style="
+                  margin-top: 20px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+               "
+            >
+               <button
+                  class="btn"
+                  onclick="copySub()"
+               >
+                  <i class="fa-solid fa-copy"></i> کپی کردن لینک
+               </button>
+               <button
+                  class="btn btn-danger"
+                  onclick="closeModal()"
+               >
+                  بستن پنجره
+               </button>
+            </div>
+         </div>
+      </div>
+
+      <div
+         class="modal"
+         id="auth-modal"
+         style="display: flex"
+      >
+         <div class="modal-content">
+            <h3 class="section-title">
+               <i
+                  class="fa-solid fa-key"
+                  style="color: #3b82f6"
+               ></i>
+               ورود به داشبورد
+            </h3>
+
+            <p style="color: var(--text-muted); margin-bottom: 12px">
+               توکن API را وارد کنید
+            </p>
+
+            <input
+               id="token-input"
+               class="input"
+               placeholder="Bearer Token"
+               dir="ltr"
+            />
+
+            <div style="margin-top: 16px">
+               <button
+                  class="btn"
+                  onclick="saveToken()"
+               >
+                  ورود
+               </button>
+            </div>
+         </div>
+      </div>
+      <script
+         type="module"
+         src="/src/main.js"
+      ></script>
+   </body>
+</html>
